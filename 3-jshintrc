@@ -1,0 +1,7 @@
+   //Exercise 3
+   //You can start with this config file for jshint:
+
+{
+        "node": true,
+        "undef": true
+    }

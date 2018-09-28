@@ -1,0 +1,65 @@
+// Exercise 7 scan-client.js
+/*To show you how it works, here's a simple HTTP client that has
+something wrong with it:
+    //  scan-client.js
+    var request = require("http").request;
+    var contentType = "text/html";
+    var body = "<html>" +
+               "<head><title>hi</title></head>" +
+               "<body><p>yo</p></body>" +
+               "</html>";
+    var headers = {
+      host : "localhost",
+      port : 9876,
+      method : "GET",
+      headers : {
+        "content-type"   : contentType,
+        "content-length" : body.length,
+        "requested-by"   : "Request™"
+      }
+    };
+    var yolo = request(headers, function (res) {
+      res.setEncoding("utf8");
+      res.on("data", function (data) {
+        console.log("BODY: " + data);
+      });
+      res.on("end", function () {
+        console.error("done!");
+      });
+    });
+    yolo.end();*/
+
+var request = require("http").request;
+
+var contentType = "text/html";
+var body = "<html>" +
+           "<head><title>hi</title></head>" +
+           "<body><p>yo</p></body>" +
+           "</html>";
+
+
+var headers = {
+  host : "localhost",
+  port : 9876,
+  method : "GET",
+  /*headers : {
+    "content-type"   : contentType,
+    "content-length" : body.length,
+    "requested-by"   : "Request™"
+  }*/
+};
+
+var yolo = request(headers, function (res) {
+  res.setEncoding("utf8");
+  res.on("data", function (data) {
+    console.log("BODY: " + data);
+  });
+
+  res.on("end", function () {
+    console.error("done!");
+  });
+});
+
+yolo.end();
+
+
